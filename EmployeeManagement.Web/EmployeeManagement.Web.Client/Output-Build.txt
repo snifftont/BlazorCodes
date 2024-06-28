@@ -1,0 +1,15 @@
+﻿Build started at 4:54 AM...
+1>------ Build started: Project: EmployeeManagement.Models, Configuration: Debug Any CPU ------
+1>C:\Hosting\Apps\BlazorCode\EmployeeManagement.Models\Employee.cs(12,23,12,32): warning CS8618: Non-nullable property 'FirstName' must contain a non-null value when exiting constructor. Consider declaring the property as nullable.
+1>C:\Hosting\Apps\BlazorCode\EmployeeManagement.Models\Employee.cs(13,23,13,31): warning CS8618: Non-nullable property 'LastName' must contain a non-null value when exiting constructor. Consider declaring the property as nullable.
+1>C:\Hosting\Apps\BlazorCode\EmployeeManagement.Models\Employee.cs(14,23,14,28): warning CS8618: Non-nullable property 'Email' must contain a non-null value when exiting constructor. Consider declaring the property as nullable.
+1>C:\Hosting\Apps\BlazorCode\EmployeeManagement.Models\Employee.cs(18,23,18,32): warning CS8618: Non-nullable property 'PhotoPath' must contain a non-null value when exiting constructor. Consider declaring the property as nullable.
+1>C:\Hosting\Apps\BlazorCode\EmployeeManagement.Models\Department.cs(6,23,6,37): warning CS8618: Non-nullable property 'DepartmentName' must contain a non-null value when exiting constructor. Consider declaring the property as nullable.
+1>EmployeeManagement.Models -> C:\Hosting\Apps\BlazorCode\EmployeeManagement.Models\bin\Debug\net8.0\EmployeeManagement.Models.dll
+1>Done building project "EmployeeManagement.Models.csproj".
+2>------ Build started: Project: EmployeeManagement.Api, Configuration: Debug Any CPU ------
+3>------ Build started: Project: EmployeeManagement.Web, Configuration: Debug Any CPU ------
+2>EmployeeManagement.Api -> C:\Hosting\Apps\BlazorCode\EmployeeManagement.Api\bin\Debug\net8.0\EmployeeManagement.Api.dll
+3>EmployeeManagement.Web -> C:\Hosting\Apps\BlazorCode\EmployeeManagement.Web\EmployeeManagement.Web\bin\Debug\net8.0\EmployeeManagement.Web.dll
+========== Build: 3 succeeded, 0 failed, 1 up-to-date, 0 skipped ==========
+========== Build completed at 4:54 AM and took 02.879 seconds ==========
