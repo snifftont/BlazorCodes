@@ -26,5 +26,9 @@ namespace EmployeeManagement.Web.Components.Pages
             departments=(await DepartmentService.GetDepartments()).ToList();
             departmentId=employee.DepartmentId.ToString();
         }
+        protected void HandleValidSubmit()
+        {
+
+        }
     }
 }

@@ -2,7 +2,9 @@
 @page "/EditEmployee"
 @inherits EditEmployeeBase
 
-<EditForm Model="@employee">
+<EditForm Model="@employee" OnValidSubmit="HandleValidSumbmit">
+    <DataAnnotationsValidator/>
+    <ValidationSummary/>
     <h3>Edit Employee</h3>
     <hr />
     <div class="form-group row">
@@ -11,6 +13,7 @@
         </label>
         <div class="col-sm-10">
             <InputText id="firstName" class="form-control" placeholder="First Name" @bind-Value="employee.FirstName" />
+            <ValidationMessage For="@(()=>employee.FirstName)" />
         </div>
     </div>
 
@@ -19,7 +22,8 @@
             Last Name
         </label>
         <div class="col-sm-10">
-            <InputText id="lastName" class="form-control" placeholder="First Name" @bind-Value="employee.LastName" />
+            <InputText id="lastName" class="form-control" placeholder="Last Name" @bind-Value="employee.LastName" />
+            <ValidationMessage For="@(()=>employee.LastName)" />
         </div>
     </div>
 
@@ -28,7 +32,8 @@
             Email
         </label>
         <div class="col-sm-10">
-            <InputText id="email" class="form-control" placeholder="First Name" @bind-Value="employee.Email" />
+            <InputText id="email" class="form-control" placeholder="Email" @bind-Value="employee.Email" />
+            <ValidationMessage For="@(()=>employee.Email)" />
         </div>
     </div>
     <div class="form-group row">
@@ -45,7 +50,7 @@
         </div>
     </div>
     <div class="form-group row">
-        <label for="department" class="col-sm-2 col-form-label">
+        <label for="gender" class="col-sm-2 col-form-label">
             Gender
         </label>
         <div class="col-sm-10">
@@ -57,4 +62,13 @@
             </InputSelect>
         </div>
     </div>
+    <div class="form-group row">
+        <label for="dateOfBirth" class="col-sm-2 col-form-label">
+            Date Of Birth
+        </label>
+        <div class="col-sm-10">
+            <InputDate class="form-control" @bind-Value="employee.DateOfBirth"/>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
 </EditForm>
