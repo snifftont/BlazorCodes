@@ -10,6 +10,7 @@
     <ProjectReference Include="..\..\EmployeeManagement.Models\EmployeeManagement.Models.csproj" />
     <ProjectReference Include="..\..\Snifftont.Components\Snifftont.Components.csproj" />
     <ProjectReference Include="..\EmployeeManagement.Web.Client\EmployeeManagement.Web.Client.csproj" />
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="8.0.6" />
   </ItemGroup>
 

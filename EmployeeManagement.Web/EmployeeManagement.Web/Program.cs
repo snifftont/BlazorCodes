@@ -1,6 +1,7 @@
 using EmployeeManagement.Web.Client.Pages;
 using EmployeeManagement.Web.Components;
 using EmployeeManagement.Web.Components.Pages.Services;
+using EmployeeManagement.Web.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents()
     .AddInteractiveWebAssemblyComponents();
+builder.Services.AddAutoMapper(typeof(EmployeeProfile));
 builder.Services.AddHttpClient<IEmployeeService, EmployeeService>(client=>
 {
     client.BaseAddress = new Uri("https://localhost:7271");

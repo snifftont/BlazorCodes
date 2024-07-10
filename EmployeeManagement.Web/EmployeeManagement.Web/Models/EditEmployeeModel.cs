@@ -20,7 +20,7 @@ namespace EmployeeManagement.Web.Models
         [EmailDomainValidator(AllowedDomain = "snifftont.com", ErrorMessage = "Only snifftont.com is allowed")]
         public string Email { get; set; }
         public string ConfirmEmail { get; set; }
-        public DateTime DateOfBrith { get; set; }
+        public DateTime DateOfBirth { get; set; }
         public Gender Gender { get; set; }
         [Required]
         public int DepartmentId { get; set; }

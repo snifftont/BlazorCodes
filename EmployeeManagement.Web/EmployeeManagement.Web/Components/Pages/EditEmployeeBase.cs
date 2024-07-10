@@ -1,5 +1,7 @@
-﻿using EmployeeManagement.Models;
+﻿using AutoMapper;
+using EmployeeManagement.Models;
 using EmployeeManagement.Web.Components.Pages.Services;
+using EmployeeManagement.Web.Models;
 using Microsoft.AspNetCore.Components;
 
 namespace EmployeeManagement.Web.Components.Pages
@@ -9,6 +11,7 @@ namespace EmployeeManagement.Web.Components.Pages
         [Inject]
         public IEmployeeService EmployeeService { get; set; }
         public Employee employee { get; set; } = new Employee();
+        public EditEmployeeModel editEmployeeModel { get; set; } =new EditEmployeeModel();
 
         [Inject]
         public IDepartmentService DepartmentService { get; set; }
@@ -20,11 +23,15 @@ namespace EmployeeManagement.Web.Components.Pages
         [Parameter]
         public string Id { get; set; }
 
+        [Inject]
+        public IMapper mapper { get; set; }
         protected async override Task OnInitializedAsync()
         {
             employee = await EmployeeService.GetEmployee(int.Parse(Id));
             departments=(await DepartmentService.GetDepartments()).ToList();
             departmentId=employee.DepartmentId.ToString();
+
+            mapper.Map(employee, editEmployeeModel);
         }
         protected void HandleValidSubmit()
         {
