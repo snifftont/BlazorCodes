@@ -17,7 +17,7 @@ namespace EmployeeManagement.Web.Models
         [Required]
         public string LastName { get; set; }
         [EmailAddress]
-        [EmailDomainValidator(AllowedDomain = "snifftont.com", ErrorMessage = "Only snifftont.com is allowed")]
+        //[EmailDomainValidator(AllowedDomain = "snifftont.com", ErrorMessage = "Only snifftont.com is allowed")]
         public string Email { get; set; }
         public string ConfirmEmail { get; set; }
         public DateTime DateOfBirth { get; set; }

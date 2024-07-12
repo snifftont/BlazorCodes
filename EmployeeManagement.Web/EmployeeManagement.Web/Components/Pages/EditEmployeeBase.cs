@@ -10,6 +10,8 @@ namespace EmployeeManagement.Web.Components.Pages
     {
         [Inject]
         public IEmployeeService EmployeeService { get; set; }
+        
+        public string PageHeaderText { get; set; }
         public Employee employee { get; set; } = new Employee();
         public EditEmployeeModel editEmployeeModel { get; set; } =new EditEmployeeModel();
 
@@ -25,17 +27,56 @@ namespace EmployeeManagement.Web.Components.Pages
 
         [Inject]
         public IMapper mapper { get; set; }
+        
+        [Inject]
+        public NavigationManager navigationManager { get; set; }
         protected async override Task OnInitializedAsync()
         {
-            employee = await EmployeeService.GetEmployee(int.Parse(Id));
+            int.TryParse(Id, out int employeeId);
+            if(employeeId != 0)
+            {
+                PageHeaderText = "Edit Employee";
+                employee = await EmployeeService.GetEmployee(int.Parse(Id));
+            }
+            else
+            {
+                PageHeaderText = "Create Employee";
+                employee = new Employee
+                {
+                    DepartmentId = 1,
+                    DateOfBirth = DateTime.Now,
+                    PhotoPath = "images/nophoto.jpg"
+                };
+            }
+            
             departments=(await DepartmentService.GetDepartments()).ToList();
-            departmentId=employee.DepartmentId.ToString();
+            //departmentId=employee.DepartmentId.ToString();
 
             mapper.Map(employee, editEmployeeModel);
+            
         }
-        protected void HandleValidSubmit()
+        protected async Task HandleValidSubmit()
         {
-
+            mapper.Map(editEmployeeModel, employee);
+            Employee result = null;
+            if(employee.EmployeeId!=0)
+            {
+                result = await EmployeeService.UpdateEmployee(employee);
+            }
+            else
+            {
+                result = await EmployeeService.CreateEmployee(employee);
+            }
+          
+            if(result!=null)
+            {
+                navigationManager.NavigateTo("/");
+            }
+        }
+        protected async Task Delete_Click()
+        {
+            await EmployeeService.DeleteEmployee(employee.EmployeeId);
+            navigationManager.NavigateTo("/");
         }
     }
 }

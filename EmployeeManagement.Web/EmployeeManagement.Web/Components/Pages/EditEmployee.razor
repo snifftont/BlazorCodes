@@ -2,10 +2,10 @@
 @page "/EditEmployee"
 @inherits EditEmployeeBase
 
-<EditForm Model="@editEmployeeModel" OnValidSubmit="HandleValidSubmit">
+<EditForm Model="@editEmployeeModel" OnValidSubmit="HandleValidSubmit" FormName="editEmployee">
     <DataAnnotationsValidator/>
     <ValidationSummary/>
-    <h3>Edit Employee</h3>
+    <h3>@PageHeaderText</h3>
     <hr />
     <div class="form-group row">
         <label for="firstName" class="col-sm-2 col-form-label">
@@ -80,4 +80,8 @@
         </div>
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
+    @if (editEmployeeModel.EmployeeId > 0)
+    {
+        <button type="submit" class="btn btn-primary" @onclick="Delete_Click">Delete</button>
+    }
 </EditForm>
