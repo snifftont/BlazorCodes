@@ -4,7 +4,6 @@ using EmployeeManagement.Web.Components.Pages.Services;
 using EmployeeManagement.Web.Models;
 
 var builder = WebApplication.CreateBuilder(args);
-
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents()
@@ -12,8 +11,9 @@ builder.Services.AddRazorComponents()
 builder.Services.AddAutoMapper(typeof(EmployeeProfile));
 builder.Services.AddHttpClient<IEmployeeService, EmployeeService>(client=>
 {
-    client.BaseAddress = new Uri("https://localhost:7271");
-    });
+     client.BaseAddress = new Uri("https://localhost:7271");
+    //client.BaseAddress = new Uri("https://www.cloudretails.com/net8api");
+});
 builder.Services.AddHttpClient<IDepartmentService, DepartmentService>(client =>
 {
     client.BaseAddress = new Uri("https://localhost:7271");

@@ -58,6 +58,7 @@ namespace EmployeeManagement.Web.Components.Pages
         protected async Task HandleValidSubmit()
         {
             mapper.Map(editEmployeeModel, employee);
+            
             Employee result = null;
             if(employee.EmployeeId!=0)
             {

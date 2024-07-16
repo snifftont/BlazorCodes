@@ -16,7 +16,7 @@ namespace EmployeeManagement.Web.Components.Pages.Services
 
         public async Task<Employee> CreateEmployee(Employee newEmployee)
         {
-            var response = await httpClient.PostAsJsonAsync<Employee>("/api/employees", newEmployee);
+            var response = await httpClient.PostAsJsonAsync($"/api/employees", newEmployee);
             return await response.Content.ReadFromJsonAsync<Employee>();
 
         }
@@ -39,7 +39,7 @@ namespace EmployeeManagement.Web.Components.Pages.Services
 
         public async Task<Employee> UpdateEmployee(Employee updatedEmployee)
         {
-            var response = await httpClient.PutAsJsonAsync<Employee>("/api/employees", updatedEmployee);
+            var response = await httpClient.PutAsJsonAsync("/api/employees", updatedEmployee);
             return await response.Content.ReadFromJsonAsync<Employee>();
         }
     }
