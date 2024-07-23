@@ -3,16 +3,21 @@ using EmployeeManagement.Models;
 using EmployeeManagement.Web.Components.Pages.Services;
 using EmployeeManagement.Web.Models;
 using Microsoft.AspNetCore.Components;
+using NuGet.Protocol;
 
 namespace EmployeeManagement.Web.Components.Pages
 {
     public class EditEmployeeBase:ComponentBase
     {
+        [CascadingParameter] 
+        public HttpContext? HttpContext { get; set; }
+
         [Inject]
         public IEmployeeService EmployeeService { get; set; }
         
         public string PageHeaderText { get; set; }
         public Employee employee { get; set; } = new Employee();
+        [SupplyParameterFromForm]
         public EditEmployeeModel editEmployeeModel { get; set; } =new EditEmployeeModel();
 
         [Inject]
@@ -20,7 +25,7 @@ namespace EmployeeManagement.Web.Components.Pages
 
         public List<Department> departments { get; set; } = new List<Department>();
 
-        public string departmentId { get; set; }
+        //public string departmentId { get; set; }
 
         [Parameter]
         public string Id { get; set; }
@@ -50,18 +55,29 @@ namespace EmployeeManagement.Web.Components.Pages
             }
             
             departments=(await DepartmentService.GetDepartments()).ToList();
-            //departmentId=employee.DepartmentId.ToString();
 
-            mapper.Map(employee, editEmployeeModel);
+            if (HttpMethods.IsGet(HttpContext.Request.Method))
+            {
+
+                mapper.Map(employee, editEmployeeModel);
+            }
             
         }
         protected async Task HandleValidSubmit()
         {
+            if (Id!=null && int.Parse(Id) != 0)
+            {
+                editEmployeeModel.EmployeeId = int.Parse(Id);
+                editEmployeeModel.PhotoPath ="images/jon.png";
+                editEmployeeModel.department = new Department { DepartmentId = 1, DepartmentName = "IT" };
+            }
+
             mapper.Map(editEmployeeModel, employee);
             
             Employee result = null;
             if(employee.EmployeeId!=0)
             {
+
                 result = await EmployeeService.UpdateEmployee(employee);
             }
             else
@@ -74,10 +90,18 @@ namespace EmployeeManagement.Web.Components.Pages
                 navigationManager.NavigateTo("/");
             }
         }
-        protected async Task Delete_Click()
-        {
-            await EmployeeService.DeleteEmployee(employee.EmployeeId);
-            navigationManager.NavigateTo("/");
-        }
+        //protected Snifftont.Components.ConfirmBase DeleteConfirmation { get; set; }
+        //protected void Delete_Click()
+        //{
+        //    DeleteConfirmation.Show();
+        //}
+        //protected async Task ConfirmDelete_Click(bool deleteConfirmed)
+        //{
+        //    if (deleteConfirmed)
+        //    {
+        //        await EmployeeService.DeleteEmployee(employee.EmployeeId);
+        //        navigationManager.NavigateTo("/");
+        //    }
+        //}
     }
 }

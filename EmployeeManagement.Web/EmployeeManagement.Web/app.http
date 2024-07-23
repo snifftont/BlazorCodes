@@ -1,0 +1,6 @@
+# For more info on HTTP files go to https://aka.ms/vs/httpfile
+@BlazorApp_HostAddress = https://localhost:7271
+
+GET {{BlazorApp_HostAddress}}/api/employees
+Accept: application/json
+
