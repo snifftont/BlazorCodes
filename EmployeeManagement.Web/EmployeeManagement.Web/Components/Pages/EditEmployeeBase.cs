@@ -68,10 +68,10 @@ namespace EmployeeManagement.Web.Components.Pages
             if (Id!=null && int.Parse(Id) != 0)
             {
                 editEmployeeModel.EmployeeId = int.Parse(Id);
-                editEmployeeModel.PhotoPath ="images/jon.png";
-                editEmployeeModel.department = new Department { DepartmentId = 1, DepartmentName = "IT" };
+                
+                //editEmployeeModel.department = new Department { DepartmentId = 1, DepartmentName = "IT" };
             }
-
+            editEmployeeModel.PhotoPath = "images/jon.png";
             mapper.Map(editEmployeeModel, employee);
             
             Employee result = null;

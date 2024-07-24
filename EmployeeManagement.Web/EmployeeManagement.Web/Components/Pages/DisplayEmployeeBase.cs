@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace EmployeeManagement.Web.Components.Pages
+namespace EmployeeManagement.Web.Pages
 {
     public class DisplayEmployeeBase : ComponentBase
     {
@@ -34,7 +34,7 @@ namespace EmployeeManagement.Web.Components.Pages
         {
             DeleteConfirmation.Show();
         }
-        
+
         protected async Task ConfirmDelete_Click(bool deleteConfirmed)
         {
             if (deleteConfirmed)

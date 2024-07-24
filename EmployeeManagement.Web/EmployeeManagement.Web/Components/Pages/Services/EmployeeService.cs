@@ -18,30 +18,29 @@ namespace EmployeeManagement.Web.Components.Pages.Services
 
         public async Task<Employee> CreateEmployee(Employee newEmployee)
         {
-            var response = await httpClient.PostAsJsonAsync("https://localhost:7271/api/employees", newEmployee);
+            var response = await httpClient.PostAsJsonAsync<Employee>(new Uri("https://localhost:7271/api/employees"), newEmployee);
             return await response.Content.ReadFromJsonAsync<Employee>();
 
         }
 
         public async Task DeleteEmployee(int id)
         {
-            await httpClient.DeleteAsync($"https://localhost:7271/api/employees/{id}");
+            await httpClient.DeleteAsync(new Uri($"https://localhost:7271/api/employees/{id}"));
         }
 
         public async Task<Employee> GetEmployee(int id)
         {
-            return await httpClient.GetFromJsonAsync<Employee>($"https://localhost:7271/api/employees/{id}");
+            return await httpClient.GetFromJsonAsync<Employee>(new Uri($"https://localhost:7271/api/employees/{id}"));
             
         }
 
         public async Task<IEnumerable<Employee>> GetEmployees()
         {
-            return await httpClient.GetFromJsonAsync<Employee[]>("https://localhost:7271/api/employees");
+            return await httpClient.GetFromJsonAsync<Employee[]>(new Uri("https://localhost:7271/api/employees"));
         }
 
         public async Task<Employee> UpdateEmployee(Employee updatedEmployee)
         {
-            //httpClient.BaseAddress = new Uri(httpClient.BaseAddress.ToString());
             var response = await httpClient.PutAsJsonAsync<Employee>(new Uri("https://localhost:7271/api/employees"), updatedEmployee);
             var rst = response.Content.ReadAsStringAsync();
             return await response.Content.ReadFromJsonAsync<Employee>();

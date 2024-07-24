@@ -23,6 +23,6 @@ namespace EmployeeManagement.Web.Models
         [Required]
         public int? DepartmentId { get; set; }
         public string PhotoPath { get; set; }
-        public Department department { get; set; } = new Department();
+        //public Department department { get; set; } = new Department();
     }
 }
