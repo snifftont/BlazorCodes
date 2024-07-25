@@ -1,1 +1,1 @@
-.Net 8/0 Blazor Web Api prjects
+.Net 8/0 Blazor Web Api projects
