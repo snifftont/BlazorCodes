@@ -13,12 +13,12 @@ namespace EmployeeManagement.Web.Components.Pages.Services
 
         public async Task<Department> GetDepartment(int id)
         {
-            return  await httpClient.GetFromJsonAsync<Department>($"https://localhost:7271/api/departments/{id}");
+            return  await httpClient.GetFromJsonAsync<Department>(new Uri($"https://localhost:7271/api/departments/{id}"));
         }
 
         public async Task<IEnumerable<Department>> GetDepartments()
         {
-            return await httpClient.GetFromJsonAsync<Department[]>("https://localhost:7271/api/departments");
+            return await httpClient.GetFromJsonAsync<Department[]>(new Uri("https://localhost:7271/api/departments"));
         }
     }
 }

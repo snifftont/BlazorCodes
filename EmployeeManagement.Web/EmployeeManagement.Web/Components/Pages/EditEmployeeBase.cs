@@ -56,11 +56,7 @@ namespace EmployeeManagement.Web.Components.Pages
             
             departments=(await DepartmentService.GetDepartments()).ToList();
 
-            if (HttpMethods.IsGet(HttpContext.Request.Method))
-            {
-
                 mapper.Map(employee, editEmployeeModel);
-            }
             
         }
         protected async Task HandleValidSubmit()
