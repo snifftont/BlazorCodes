@@ -19,7 +19,7 @@ else
                 <img class="card-img-top" src="@employee.PhotoPath" @onmousemove="@Mouse_Move" />
                 <h4>Employee ID : @employee.EmployeeId</h4>
                 <h4>Email : @employee.Email</h4>
-                    <h4>Department : @(employee.DepartmentId == null ? "N/A" : employee.DepartmentId)</h4>
+                    <h4>Department : @(dept.DepartmentName == null ? "N/A" : dept.DepartmentName)</h4>
                 <button id="buttonHide" class="btn btn-primary" @onclick="@Button_Click" >@ButtonText</button>
 
             </div>

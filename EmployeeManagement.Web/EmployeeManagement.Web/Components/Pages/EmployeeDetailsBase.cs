@@ -9,12 +9,15 @@ namespace EmployeeManagement.Web.Components.Pages
     public class EmployeeDetailsBase:ComponentBase
     {
         public Employee employee { get; set; }= new Employee();
+        public Department dept { get; set; } = new Department();
         protected string coordinates { get; set; }
         public string ButtonText { get; set; } = "Hide Footer";
         public string cssClass { get; set; } = null;
 
         [Inject]
         public IEmployeeService EmployeeService { get; set; }
+        [Inject]
+        public IDepartmentService DepartmentService { get; set; }
         [Parameter]
         public string Id { get; set; }
 
@@ -22,6 +25,7 @@ namespace EmployeeManagement.Web.Components.Pages
         {
             Id=Id?? "1";
             employee = await EmployeeService.GetEmployee(int.Parse(Id));
+            dept =await DepartmentService.GetDepartment(employee.DepartmentId);
         }
 
         protected void Mouse_Move(MouseEventArgs e)
