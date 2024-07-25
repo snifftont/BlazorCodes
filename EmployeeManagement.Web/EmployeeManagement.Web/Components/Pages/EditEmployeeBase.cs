@@ -55,7 +55,6 @@ namespace EmployeeManagement.Web.Components.Pages
             }
             
             departments=(await DepartmentService.GetDepartments()).ToList();
-
                 mapper.Map(employee, editEmployeeModel);
             
         }

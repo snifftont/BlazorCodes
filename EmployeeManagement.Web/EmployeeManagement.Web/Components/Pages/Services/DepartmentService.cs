@@ -1,4 +1,10 @@
 ﻿using EmployeeManagement.Models;
+using Microsoft.Extensions.Options;
+using System.Net.Http;
+using System.Net.Http.Json;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace EmployeeManagement.Web.Components.Pages.Services
 {
@@ -15,7 +21,6 @@ namespace EmployeeManagement.Web.Components.Pages.Services
         {
             return  await httpClient.GetFromJsonAsync<Department>(new Uri($"https://localhost:7271/api/departments/{id}"));
         }
-
         public async Task<IEnumerable<Department>> GetDepartments()
         {
             return await httpClient.GetFromJsonAsync<Department[]>(new Uri("https://localhost:7271/api/departments"));
